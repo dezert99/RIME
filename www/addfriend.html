@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Add Friends</title>
+        <link rel="stylesheet" href="css/addfriend-style.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script src='globalvars.js'></script>
+    <script>
+  function checkFriends(){
+    console.log('checking friends...');
+    var friendInvite = Parse.Object.extend("FriendRequests");
+    var query = new Parse.Query(friendInvite);
+    query.equalTo("toUser", 'Admin');
+    query.find({
+      
+      success: function(results) {
+        console.log('found friends');
+        //console.log("Successfully retrieved " + results.length + " scores.");
+        // Do something with the returned Parse.Object values
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+         if (fInvitesShown.indexOf(object.id)!= -1 || object.get('status') === 'rejected' || object.get('status') === 'accepted'){
+            //do nothing
+          }
+          else{
+            fInvitesShown.push(object.id);
+
+            //console.log('object.id + ' - ' + object.get(\'user\')');
+            var items = document.getElementById("fInvites");
+            var item = document.createElement("li");
+            item.innerHTML = object.get('toUser')+' '+ object.get('fromUser');
+            items.appendChild(item);
+            var btn = document.createElement("BUTTON");        // Create a <button> element
+            var t = document.createTextNode("accept");       // Create a text node
+            btn.appendChild(t);       // Append the text to <button> 
+            //console.log("btn");
+            btn.onclick = function(){ friendAccept(object); }//function(btn){console.log('in the onclick');};
+            //btn.addEventListner('click',console.log('button pressed '););
+            items.appendChild(btn);
+          }
+        }
+      },
+      error: function(error) {
+        alert("Error: " + error.code + " " + error.message);
+      }
+    });
+  }
+  function friendAccept(object){
+    //console.log('button pressed')
+    console.log(object.get('fromUser'));
+    friends.push(object.get('fromUser'));
+    //var currentUser = Parse.User.current();
+    object.set('status','accepted');
+    object.save(null, {
+      success: function(invite) {
+        // Execute any logic that should take place after the object is saved.
+        //alert('New object created with objectId: ' +invite.id);
+      },
+      error: function(invite, error) {
+        // Execute any logic that should take place if the save fails.
+        // error is a Parse.Error with an error code and message.
+        //alert('Failed to create new object, with error code: ' + error.message);
+      }
+    }); 
+    //console.log(currentUser.get('status'));
+
+  }
+  setInterval('checkFriends()',5000);
+  </script>
+  </head>
+  
+  <body>
+    <header>
+      <div class="wrap">
+        <h2>Add Friends!</h2>
+      </div>
+    </header>
+  <div class="login">
+    <div class="heading">
+      <form action="#">
+
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon"><i class="fa fa-rocket"></i></span>
+        <input type="text" class="form-control" placeholder="Search">
+          </div>
+
+        <a href=""><button type="button">Add Friend</button></a>
+        <a href="navbutt.html"><button type="button">Back to Nav</button></a>
+        <br>
+       </form>
+    </div>
+  </body>
+</html>

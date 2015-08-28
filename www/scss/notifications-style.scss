@@ -1,0 +1,100 @@
+@import "bourbon";
+
+$yellow: #fec424;
+$blue: #13171b;
+$circle-width: 50px;
+
+@include keyframes(bounce) {
+  50% {
+    @include transform(translateY(10px));
+  }
+}
+
+/* -------------------------------- Reset */
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,500);
+
+body {
+  background: $blue;
+  color: $blue;
+  font-family: 'Roboto', sans-serif;
+  h1 {
+    text-align: center;
+    margin: 20px 20px 0px 20px;
+    color: white;
+    font-size: 30px;
+    text-transform: uppercase;
+  }
+}
+
+/* -------------------------------- Step by step */
+
+.steps {
+  padding: 20px;
+	ol {
+    counter-reset: li; // Initiate a counter for use in pseudo elemntes
+    margin-left: $circle-width + 15px;
+    position: relative; // For positionig dots
+    li {
+      background: white;
+      margin: 1em auto;
+      padding: 1em;
+      position: relative; // For positioning arrow
+      opacity: 0;
+      @include transform(translateX(-100px));
+      @include transition(all 1s);
+      &:before {
+        content: counter(li); // Add list item number to element for styling
+        counter-increment: li; // Increment counter
+        display: inline-block;
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: -$circle-width - 5px;
+        background-color: $yellow;
+        font-size: $circle-width / 2 + 5;
+        border-radius: $circle-width;
+        line-height: $circle-width / 2;
+        padding: 10px;
+        height: $circle-width / 2;
+        width: $circle-width / 2;
+        text-align: center;
+        overflow: hidden;
+        font-weight: bold;
+        color: $blue;
+        opacity: 0;
+        @include transform(translateX(100px));
+        @include transition(all 1s 1s);
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        top: 18px;
+        right: 100%;
+        @include triangle(10px, white, 'left');
+      }
+      
+      .heading {
+        color: $yellow;
+        padding-bottom: 0.5em;
+        margin-bottom: 0.5em;
+        border-bottom: solid 1px $yellow;
+        font-size: 24px;
+        font-size: normal;
+      }
+      p {
+        font-size: 18px;
+        margin-bottom: 1em;
+        line-height: 1.5em;
+      }
+      &.seen { // Waypoint animation goodness
+        opacity: 1;
+        @include transform(translateX(0px));
+        &:before {
+          opacity: 1;
+          @include transform(translateX(0));
+        }
+      }
+    }
+  }
+  
