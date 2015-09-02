@@ -18,7 +18,7 @@
           <a href="routeinfo.html">Route</a>
         </li>
         <li>
-          <a href="invite.html">Sync</a>
+          <a onclick='sendInvite()'>Sync</a>
         </li>
           <li>
           <a href="navbutt.html">Nav</a>
@@ -47,6 +47,8 @@
       var map;
       var point;
       var geocoder = new google.maps.Geocoder();
+      var multi = false;
+      var sendSesID;
       if(selectedMode === 'TRANSIT'){
         for(var i=0; i<window.localStorage.getItem('wayptCount')-1;i++){
           var adder = i+1;
@@ -55,6 +57,9 @@
       }
       else{
          var waypts = JSON.parse(window.localStorage.getItem('waypts'));
+      }
+      if(window.localStorage.getItem('syncRouting')==='true'){
+      	request = JSON.parse(window.localStorage.getItem('route'));
       }
     function initAutocomplete() {
 
@@ -74,7 +79,9 @@
           if (window.localStorage.getItem('inSession')==='false'){
             calcRoute();
            }
-      
+      	else if(window.localStorage.getItem('syncRouting')==='true'){
+      		syncCalcRoute();
+      	}
           else{
             inSession();
             start = pos;
@@ -92,6 +99,36 @@
       }
 
      
+    }
+    function syncCalcRoute(){
+    console.log('syncCalcRoute');
+      directionsService.route(request, function(response, status) {
+      console.log('starteddd');
+      directionsDisplay.setDirections(response);
+      if ( status === 'OK' ) {
+          if(waypts.length!=0){
+            for(var i=0;i<=waypts.length;i++){
+              point = response.routes[ 0 ].legs[ i ];
+              if(i===0){
+              alert( 'Estimated travel time: ' + point.duration.text + ' (' + point.distance.text + ') to get to '+waypts[i].location);
+            }
+            else if(i===waypts.length){
+              alert( 'Estimated travel time: ' + point.duration.text + ' (' + point.distance.text + ') to get to '+ end);
+              console.log(waypts.length);
+            }
+            else {
+               alert( 'Estimated travel time: ' + point.duration.text + ' (' + point.distance.text + ') to get to '+waypts[i].location);
+            }
+          }
+        }
+        else {
+          point = response.routes[0].legs[0];
+           alert( 'Estimated travel time: ' + point.duration.text + ' (' + point.distance.text + ') to get to '+end);
+
+        }
+      }
+
+      });
     }
     function calcRoute() {
 
@@ -186,6 +223,49 @@ function inSession(){
       alert("Error: " + error.code + " " + error.message);
     }
   });  
+}
+function sendInvite(){
+  var invite = Parse.Object.extend("Invites");
+  var invitation = new invite();
+  var recivers = prompt('Who would you like to invite?');
+  var other = prompt('Enter another person? (Y or N)').toLowerCase();
+  if(multi===false){
+  	sendSesID = makeid();
+  }
+  invitation.set('sessionID',sendSesID);
+  invitation.set('sender',window.localStorage.getItem('username'));
+  invitation.set('sendTo', recivers);
+  //invitation.set('destination',dest);
+  invitation.set('route', request);
+  invitation.save(null, {
+      success: function(invite) {
+        // Execute any logic that should take place after the object is saved.
+        //alert('New object created with objectId: ' +invite.id);
+      },
+      error: function(invite, error) {
+        // Execute any logic that should take place if the save fails.
+        // error is a Parse.Error with an error code and message.
+        //alert('Failed to create new object, with error code: ' + error.message);
+      }
+    });
+    if(other=== 'y'){
+      console.log('set');
+      multi=true;
+      sendInvite();
+     }
+  
+}
+function makeid(){
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 5; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+if(window.localStorage.getItem('syncRoute')===true){
+	setInterval('inSession()',5000);
 }
 </script>
  <script> google.maps.event.addDomListener(window, 'load', initAutocomplete)</script>

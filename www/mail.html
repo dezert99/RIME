@@ -65,8 +65,14 @@
               btnAccept.appendChild(t);       // Append the text to <button>
               btnAccept.id=object.get('sessionID');  
               notification.appendChild(btnAccept);
-              //console.log("btn");
-              btnAccept.onclick = function(){ inviteAccept(btnAccept,object); }//function(btn){console.log('in the onclick');};
+              console.log(object.get('route'));
+              console.log("btn");
+              if(object.get('route')===undefined){
+                btnAccept.onclick = function(){ inviteAccept(btnAccept,object); }//function(btn){console.log('in the onclick');};
+              }
+              else{
+                btnAccept.onclick = function(){ routeInviteAccept(btnAccept,object); }
+              }
               //btn.addEventListner('click',console.log('button pressed '););
               var btnDecline = document.createElement("BUTTON");        // Create a <button> element
               var tx = document.createTextNode("decline");       // Create a text node
@@ -89,6 +95,44 @@
       window.localStorage.setItem('userSessionId',btn.id);
       window.localStorage.setItem('inSession',true);
       window.localStorage.setItem('end',object.get('destination'));
+     // insession = true;
+      var location = Parse.Object.extend("Sessions");
+      var loc = new location();
+      loc.set('sessionID',btn.id);
+      loc.set('user',window.localStorage.getItem('username'));
+      loc.set('location', new Parse.GeoPoint(pos.latitude,pos.longitude));
+      loc.save(null, {
+        success: function(gameScore) {
+          // Execute any logic that should take place after the object is saved.
+          alert('New object created with objectId: ' + gameScore.id);
+        },
+        error: function(gameScore, error) {
+          // Execute any logic that should take place if the save fails.
+          // error is a Parse.Error with an error code and message.
+          alert('Failed to create new object, with error code: ' + error.message);
+        }
+      });
+      window.localStorage.setItem('start',new google.maps.LatLng(pos.latitude,
+                                       pos.longitude));
+      object.set('status','accepted');
+      object.save(null, {
+        success: function(gameScore) {
+          // Execute any logic that should take place after the object is saved.
+          alert('New object created with objectId: ' + gameScore.id);
+        },
+        error: function(gameScore, error) {
+          // Execute any logic that should take place if the save fails.
+          // error is a Parse.Error with an error code and message.
+          alert('Failed to create new object, with error code: ' + error.message);
+        }
+      });
+}
+    function routeInviteAccept(btn,object){
+      console.log('button pressed')
+      window.localStorage.setItem('userSessionId',btn.id);
+      window.localStorage.setItem('inSession',true);
+      window.localStorage.setItem('route',JSON.stringify(object.get('route')));
+      window.localStorage.setItem('syncRouting',true)
      // insession = true;
       var location = Parse.Object.extend("Sessions");
       var loc = new location();
