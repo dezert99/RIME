@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    
+    <title>Navigation</title>
+        <link rel="stylesheet" href="css/navbutt-style.css">
+  </head>
+<script>
+  if(window.localStorage.getItem('inSession')=== null){
+     window.localStorage.setItem('inSession',false);
+    }
+    if(window.localStorage.getItem('syncRouting')=== null){
+     window.localStorage.setItem('syncRouting',false);  
+    }
+    function logout(){
+      Parse.User.logOut();
+      console.log('logged out');
+      window.localStorage.clear();
+      document.location.href = 'index.html';
+    }
+</script>
+  <body>
+<body background="img/RIMEhalf.png">
+  <div class="login">
+    <div class="heading">
+      <h2>NAV</h2>
+      <form action="#">
+        <a href="map.html"><button type="button">Map</button></a>
+        <a href="routeinfo.html"><button type="button">Route</button></a>
+        <a href="mail.html"><button type="button">Mail</button></a>
+        <a href="addfriend.html"><button type="button">Add Friends</button></a>
+        <a href="index.html"><button type="button">Log Out</button></a>
+
+       </form>
+ 		</div>
+</div>
+  
+
+  </body>
+</html>

@@ -1,0 +1,21 @@
+{
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.phonegap.plugins.facebookconnect": {
+        "source": {
+            "type": "registry",
+            "id": "com.phonegap.plugins.facebookconnect"
+        },
+        "is_top_level": true,
+        "variables": {
+            "APP_ID": "1632075480379294",
+            "APP_NAME": "RIME"
+        }
+    }
+}

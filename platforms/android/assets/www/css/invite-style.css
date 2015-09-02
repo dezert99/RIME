@@ -1,0 +1,178 @@
+@charset "utf-8";
+@import url(http://meyerweb.com/eric/tools/css/reset/reset.css);
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,500);
+
+
+body {
+	background-color: #6596a1;
+	color: #fff;
+	font: 16px/1 "Roboto", sans-serif;
+	line-height: 1.5em;
+}
+
+h3 {
+	font-size: 24px;
+	line-height: 1.5em;
+}
+
+input {
+	border: none;
+	font-family: inherit;
+	margin: 0;
+}
+
+textarea {
+	border: none;
+	font-family: inherit;
+	margin: 0;
+	vertical-align: top;
+}
+
+.clearfix { 
+	*zoom: 1; 
+} 
+
+.clearfix:before, .clearfix:after {
+	display: table;
+	content: "";
+}
+.clearfix:after { 
+	clear: both; 
+}
+
+#message-form {
+	border-radius: 0 0 5px 5px;
+	margin: 50px auto;
+	width: 360px;
+}
+
+#message-form header {
+	background-color: #3d5054;
+	border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+	padding: 10px 0;
+}
+
+#message-form header h3 {
+	color: #fff;
+	text-align: center;
+}
+
+#message-form textarea {
+	font-size: 16px;
+	line-height: 1.5em;
+	height: 160px;
+	padding: 10px;
+	max-width: 340px;
+	outline: none;
+	resize: none;
+	width: 340px;
+}
+
+#message-form footer {
+	background-color: #3d5054;
+	border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
+	padding: 10px 16px;
+}
+
+#message-form input[type="submit"] {
+	background-color: #6596a1;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	color: #fff;
+	float: right;
+	font-size: 16px;
+	line-height: 1.5em;
+	padding: 2px 16px;
+}
+
+#message-form input[type="submit"]:disabled {
+	background-color: #4d6f77;
+	color: #ccc;
+}
+
+.login {
+  padding: 25px;
+  width: 200px;
+  min-height: 50px;
+  margin: 2% auto 0 auto;
+  text-decoration: none;
+}
+
+.login .heading {
+  text-align: center;
+  margin-top: 1%;
+}
+
+.login .heading h2 {
+  font-size: 3em;
+  font-weight: 300;
+  color: #243f5c;
+  display: inline-block;
+  padding-bottom: 5px;
+  text-shadow: 1px 1px 3px #23203b;
+}
+
+/* Wide Screens */
+@media only screen and (max-width: 1200px) {
+  .login #message-form {
+    width: 600px;
+    font-size: 2em;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .login #message-form {
+    margin-top: 2%;
+    width: 600px;
+    font-size: 1.7em;
+  }
+}
+
+/* Desktops */
+@media only screen and (max-width: 992px) {
+  .login #message-form{
+    margin-top: 1%;
+    width: 550px;
+    font-size: 1.7em;
+    min-height: 0;
+  }
+}
+
+/* Tablets */
+@media only screen and (max-width: 768px) {
+  .login #message-form{
+    margin-top: 0;
+    width: 500px;
+    font-size: 1.3em;
+    min-height: 0;
+  }
+}
+
+/* Phones */
+@media only screen and (max-width: 480px) {
+  .login #message-form{
+    margin-top: 0;
+    width: 400px;
+    font-size: 1em;
+    min-height: 0;
+  }
+
+  .login h2 {
+    margin-top: 0;
+  }
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
+  .login #message-form{
+    margin-top: 0;
+    width: 200px;
+    font-size: 0.7em;
+    min-height: 0;
+  }
+}

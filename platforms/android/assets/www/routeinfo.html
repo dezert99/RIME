@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Route</title>
+        <link rel="stylesheet" href="css/routeinfo-style.css">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js">
+        </script>
+        <script src="awesomplete.js" async></script>
+        <SCRIPT language="javascript">
+
+        //not working. I would run all of the textboxes through a loop and populate the waypoints array once I have all of the id's set up
+        // but I can't get that to work
+            var waypointCount = 1;
+            function initMap() {
+			    var input = document.getElementById('test');
+			    var autocomplete = new google.maps.places.Autocomplete(input);
+			}
+			
+           $(document).ready(function() {
+              var $input = $(".locationinput");
+              $input.attr('id','start');
+              $input.attr('oninput','test()')
+              var $clone = $input.clone();
+              // $clone.attr('id','end');
+              // var $locsec = $("#locationsection");
+              // $locsec.after($clone);
+
+              $( "#addLocation" ).click(function() {
+                var $midClone = $input.clone();
+                $midClone.find("input").val("");
+                $midClone.attr( "id", waypointCount.toString());
+                console.log($midClone.attr('id'));
+                $locsec.append($midClone);
+                waypointCount++;
+            }); 
+              $('#getDirections').click(function(){
+                var waypts = [];
+                var start = $('#start').find('input').val();
+                // var end= $('#end').find('input').val();
+                //var start = $('#start').val();
+                var end =  $('#end').val();
+                for(var i = 1;i<waypointCount+1;i++){
+                  //var waypt = $('#'+i).find('input').val(); CHANGED FOR DEMO
+                  var waypt = $('#1').val()
+                  if($('#mode').val()!= 'TRANSIT'){
+                   waypts.push({location:waypt,stopover:true});
+                }
+                else{
+                  waypts.push(waypt);
+                }
+                  console.log(waypt+" "+start+" "+end);
+                
+
+
+                }
+                if($('#mode').val() === 'TRANSIT'){
+                    for(var i =0 ;i<waypts.length;i++){
+                      var adder = i+1;
+                      window.localStorage.setItem('waypt'+adder,waypts[i]);
+                    }
+                    window.localStorage.setItem('waypts',waypts);
+                    window.localStorage.setItem('wayptCount',waypointCount);
+              }
+              else{
+                window.localStorage.setItem('waypts',JSON.stringify(waypts));
+              }
+                window.localStorage.setItem('start',start);
+                window.localStorage.setItem('end',end);
+                window.localStorage.setItem('selectedMode',$('#mode').val());
+                document.location.href = 'map.html';
+
+              })
+              console.log($('#mode').val());
+              window.localStorage.setItem('inSession',false);
+           });
+			function initMap() {
+				// elements = $('.form-control');
+				// for(var i=1;i < elements.length;i++){
+				// 	var autocomplete = new google.maps.places.Autocomplete(elements.i);
+				// }
+
+			  var input = document.getElementById('test');
+			  var autocomplete = new google.maps.places.Autocomplete(input);
+			  var input1 = document.getElementById('1');
+			  var autocomplete2 = new google.maps.places.Autocomplete(input1);
+			  var input2 = document.getElementById('end');
+			  var autocomplete3 = new google.maps.places.Autocomplete(input2);
+
+			  console.log('fired');
+			}
+			//initMap();
+			function test(){}
+
+      </SCRIPT>
+
+        <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&libraries=places&callback=initMap"
+        async defer></script>
+  </head>
+  <body>
+    <header>
+  <div class="wrap">
+    <h2>Destinations</h2>
+  </div>
+</header>
+  <div class="login">
+    <div class="heading">
+      <form action="#">
+      <div class="input-group input-group-lg locationinput">
+        <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+        <input type="text" class="form-control" placeholder="Location" list= 'autocom' id='test'>
+      </div>
+      <div class="input-group input-group-lg secondone">
+        <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+        <input type="text" class="form-control" placeholder="Location" list= 'autocom' id='1'>
+      </div>
+      <div class="input-group input-group-lg secondone">
+        <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+        <input type="text" class="form-control" placeholder="Location" list= 'autocom' id='end'>
+      </div>
+      <datalist id='autocom'>
+      	<option value'U'>
+      </datalist>
+        <span id="locationsection">&nbsp;</span>
+         <b>Mode of Travel: </b>
+    <select id="mode">
+      <option value="DRIVING">Driving</option>
+      <option value="WALKING">Walking</option>
+      <option value="BICYCLING">Bicycling</option>
+      <option value="TRANSIT">Transit</option>
+    </select>
+        <button class="button" type="button" value="Add" id='addLocation'>Add Location</button>
+        <button type="button" id='getDirections'>Directions</button>
+        <a href="navbutt.html"><button type="button" id="backtomap">Back to nav</button></a>
+
+ 		</div>
+    </div>
+  </body>
+</html>

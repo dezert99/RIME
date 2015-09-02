@@ -1,0 +1,254 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700);
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,500);
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic' rel='stylesheet' type='text/css'>
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+  background:#3a3a3a;
+}
+
+body, input, button {
+  font: 12px/1 "Roboto", sans-serif;
+}
+
+a{
+  color: #fff;
+}
+
+a:hover{
+  text-decoration: none;
+  color: #8d403e;
+}
+
+h5{
+  text-decoration: underline;
+  margin: 60px 0px;
+}
+
+h5:hover{
+  color: #8d403e;
+}
+
+h5:visited{
+  color: #8d403e;
+}
+
+img{
+  margin-top: 10px;
+  margin-bottom: 30px;
+  margin-right: 60px;
+  margin-left: 60px; 
+}
+
+.login {
+  padding: 20px;
+  width: 400px;
+  min-height: 200px;
+  margin: 2% auto 0 auto;
+  text-decoration: none;
+}
+
+.login .heading {
+  text-align: center;
+  margin-top: 1%;
+}
+
+.login .heading h2 {
+  font-family: ‘Metrophobic’, Arial, serif; 
+  font-weight: lighter;
+  font-size: 4em;
+  color: #f9fdff;
+  display: inline-block;
+  padding-bottom: 5px;
+  padding-top: 10px;
+  text-shadow: 1px 1px 3px #23203b;
+  margin: 0px;
+}
+
+.login form .input-group {
+  border: solid #5fc49a;
+  border-width: 1 1px;
+  text-decoration: none;
+  margin: 20px;
+  background: #f9fdff;
+  border-radius: 20px;
+}
+
+.login form .input-group span {
+  background: transparent;
+  min-width: 53px;
+  border: none;
+  text-decoration: none;
+}
+
+/* Login logos */
+.login form .input-group span i {
+  font-size: 1.5em;
+  color: #000;
+  text-decoration: none;
+}
+
+/* Login input areas */
+.login form input.form-control {
+  text-decoration: none;
+  display: block;
+  width: auto;
+  height: auto;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: none;
+  border-radius: 0px;
+  padding: 10px;
+  font-size: 1.6em;
+  width: 100%;
+  background: transparent;
+  color: #3a3a3a;
+}
+
+/* Login button */
+
+#button {
+    width: 10em;  
+    height: 2em;
+}
+
+button, button a{
+  position:relative;
+  color: #ccfe3b;
+  text-transform: uppercase;
+}
+
+button a{
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+}
+
+.login form input.form-control:focus {
+  text-decoration: none;
+  border: none;
+}
+
+.login form button {
+  text-decoration: none;
+  margin-top: 20px;
+  background: #9dd9e3;
+  border: none;
+  font-size: 1.6em;
+  font-weight: 100;
+  padding: 5px 5px;
+  width: 60%;
+  border-radius: 20px;
+  color: #000;
+  letter-spacing: 5px;
+}
+
+
+.social-login{
+  text-align:center;
+  font-size: 20px;
+}
+
+.social-login a{
+  display:inline-block; 
+  height:35px; 
+  text-align:center; 
+  line-height:35px; 
+  width:35px; 
+  margin:0 0px; 
+  text-decoration:none; 
+  bottom: 20px;
+}
+
+.float {
+  text-decoration: none;
+  display: inline-block;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px transparent;
+}
+
+.float:hover, .float:focus, .float:active {
+  -webkit-transform: translateY(-3px);
+  transform: translateY(-3px);
+}
+
+/* Wide Screens */
+@media only screen and (max-width: 1200px) {
+  .login {
+    width: 600px;
+    font-size: 2em;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .login {
+    margin-top: 2%;
+    width: 600px;
+    font-size: 1.7em;
+  }
+}
+
+/* Desktops */
+@media only screen and (max-width: 992px) {
+  .login {
+    margin-top: 1%;
+    width: 550px;
+    font-size: 1.7em;
+    min-height: 0;
+  }
+}
+
+/* Tablets */
+
+@media only screen and (max-width: 768px) {
+  .login {
+    margin-top: 0;
+    width: 500px;
+    font-size: 2em;
+    min-height: 0;
+  }
+}
+
+/* Phones */
+@media only screen and (max-width: 480px) {
+  .login {
+    margin-top: 0;
+    width: 400px;
+    font-size: 1.3em;
+    min-height: 0;
+  }
+
+  .login h2 {
+    margin-top: 0;
+  }
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
+  .login {
+    margin-top: 0;
+    width: 200px;
+    font-size: 0.7em;
+    min-height: 0;
+  }
+}

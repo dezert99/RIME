@@ -1,0 +1,187 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,500);
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #5fc49a;
+  font: 12px/1 "Roboto", sans-serif;
+  color: #fff;
+  padding-top: 90px;
+}
+
+h1 {
+  font-size: 42px;
+  font-weight: 300;
+  text-align: center;
+}
+
+nav {
+  margin: 0 auto;
+  display: table;
+}
+
+.papertabs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  overflow: hidden;
+  *zoom: 1;
+}
+.papertabs li {
+  float: left;
+}
+
+.papertabs a {
+  color: inherit;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 16px 12px;
+  line-height: 1;
+  float: left;
+  position: relative;
+}
+
+#papertabs-line {
+  background: #fff;
+  position: absolute;
+  height: 2px;
+}
+
+
+html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position:absolute;
+        height:auto;
+        bottom:0px;
+        top:0;
+        left:0;
+        right:0;
+        margin-top:45px; 
+      }
+
+.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+.pac-container {
+  font-family: Roboto;
+}
+
+#type-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+#target {
+        width: 345px;
+      }
+
+nav a {
+  color:#fff;
+  text-decoration:none;
+  padding:1em;
+  flex-grow:1;
+  text-align:center;
+  text-transform:uppercase;
+  font-size:1.2em;
+ -webkit-transition:all 200ms ease-out;
+  margin: 0em 1em 0em 1em;
+}
+
+/* Wide Screens */
+@media only screen and (max-width: 1200px) {
+  .login {
+    width: 600px;
+    font-size: 2em;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .login {
+    margin-top: 2%;
+    width: 600px;
+    font-size: 1.7em;
+  }
+}
+
+/* Desktops */
+@media only screen and (max-width: 992px) {
+  .login {
+    margin-top: 1%;
+    width: 550px;
+    font-size: 1.3em;
+    min-height: 0;
+  }
+}
+
+/* Tablets */
+@media only screen and (max-width: 768px) {
+  .login {
+    margin-top: 0;
+    width: 500px;
+    font-size: 1.6em;
+    min-height: 0;
+  }
+}
+
+/* Phones */
+@media only screen and (max-width: 480px) {
+  .login {
+    margin-top: 0;
+    width: 400px;
+    font-size: 1.3em;
+    min-height: 0;
+  }
+
+  .login h2 {
+    margin-top: 0;
+  }
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
+  .login {
+    margin-top: 0;
+    width: 200px;
+    font-size: 0.7em;
+    min-height: 0;
+  }
+}
