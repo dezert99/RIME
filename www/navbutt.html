@@ -6,7 +6,20 @@
     <title>Navigation</title>
         <link rel="stylesheet" href="css/navbutt-style.css">
   </head>
-
+<script>
+  if(window.localStorage.getItem('inSession')=== null){
+     window.localStorage.setItem('inSession',false);
+    }
+    if(window.localStorage.getItem('syncRouting')=== null){
+     window.localStorage.setItem('syncRouting',false);  
+    }
+    function logout(){
+      Parse.User.logOut();
+      console.log('logged out');
+      window.localStorage.clear();
+      document.location.href = 'index.html';
+    }
+</script>
   <body>
 <body background="img/RIMEhalf.png">
   <div class="login">
