@@ -267,15 +267,15 @@ function makeid(){
 if(window.localStorage.getItem('syncRoute')===true){
 	setInterval('inSession()',5000);
 }
-function fbLoginSuccess {
-	alert('logged');
-}
-function LoginToFB(){
-	facebookConnectPlugin.login(['public_profile'],fbLoginSuccess,function (error){ console.log('failed');}
-}
-function Logout(){
-	facebookConnectPlugin.logout(function(){alert('logged out');},function(e){alert('error'+e);})
-}
+// function fbLoginSuccess {
+// 	alert('logged');
+// }
+// function LoginToFB(){
+// 	facebookConnectPlugin.login(['public_profile'],fbLoginSuccess,function (error){ console.log('failed');}
+// }
+// function Logout(){
+// 	facebookConnectPlugin.logout(function(){alert('logged out');},function(e){alert('error'+e);})
+// }
 </script>
  <script> google.maps.event.addDomListener(window, 'load', initAutocomplete)</script>
 </script>
