@@ -18,6 +18,8 @@ html {
 
 body {
   background:#3a3a3a;
+  overflow-x: hidden; 
+  overflow-y: auto;
 }
 
 body, input, button {
@@ -219,7 +221,6 @@ button a{
 }
 
 /* Tablets */
-
 @media only screen and (max-width: 768px) {
   .login {
     margin-top: 0;
@@ -234,7 +235,7 @@ button a{
   .login {
     margin-top: 0;
     width: 400px;
-    font-size: 1em;
+    font-size: 0.7em;
     min-height: 0;
   }
 
