@@ -5,6 +5,8 @@
 html, body {
   background: #3a3a3a;
   font-family: Roboto, sans-serif;
+  overflow-x: hidden; 
+  overflow-y: hidden;
 }
 
 h2 {

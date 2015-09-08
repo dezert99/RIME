@@ -22,6 +22,8 @@ a{
 
 body {
   background: #5fc49a;
+  overflow-x: hidden; 
+  overflow-y: hidden;
 }
 
 body, input, button {

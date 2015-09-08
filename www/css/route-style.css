@@ -25,7 +25,10 @@ body {
   background: #6596a1;
   color: #13171b;
   font: 14px/1 "Roboto", sans-serif;
+  overflow-x: hidden; 
+  overflow-y: hidden;
 }
+
 body h1 {
   text-align: center;
   margin: 20px 20px 0px 20px;

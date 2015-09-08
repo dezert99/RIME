@@ -17,6 +17,8 @@ html {
 
 body {
   background:#9dd9e3;
+  overflow-x: hidden; 
+  overflow-y: hidden;
 }
 
 body, input, button {
@@ -48,10 +50,6 @@ header, .full-width {
   min-height: 400px;
   margin: 2% auto 0 auto;
   text-decoration: none;
-}
-
-.secondone{
-
 }
 
 .login .heading {
@@ -100,16 +98,15 @@ header, .full-width {
 .login form input.form-control {
   text-decoration: none;
   display: block;
-  width: auto;
+  width: 150px;
   height: auto;
   border: none;
   outline: none;
   box-shadow: none;
   background: none;
   border-radius: 0px;
-  padding: 5px;
-  font-size: 1.6em;
-  width: 100%;
+  padding: 10px;
+  font-size: 1.3em;
   background: transparent;
   color: #243f5c;
 }
@@ -139,10 +136,10 @@ button a{
   margin-top: 20px;
   background: #f9fdff;
   border: none;
-  font-size: 1.6em;
+  font-size: 1.3em;
   font-weight: 300;
   padding: 5px 0;
-  width: 60%;
+  width: 70%;
   border-radius: 20px;
   color: #5fc49a;
   border-bottom: 4px solid #fff;
@@ -227,7 +224,7 @@ button a{
 @media only screen and (max-width: 480px) {
   .login {
     margin-top: 0;
-    width: 400px;
+    width: 300px;
     font-size: 1.3em;
     min-height: 0;
   }
