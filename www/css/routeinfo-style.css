@@ -72,7 +72,7 @@ header, .full-width {
   text-decoration: none;
   background: #f9fdff;
   border-radius: 20px;
-  margin: 15px;
+  margin: 10px;
   margin-top: 0px;
 }
 
@@ -98,7 +98,7 @@ header, .full-width {
 .login form input.form-control {
   text-decoration: none;
   display: block;
-  width: 250px;
+  width: 200px;
   height: auto;
   border: none;
   outline: none;
@@ -109,6 +109,10 @@ header, .full-width {
   font-size: 1.3em;
   background: transparent;
   color: #243f5c;
+  -webkit-appearance:none;
+  -webkit-appearance:textfield;
+  box-sizing: content-box;
+  -webkit-appearance:caret;
 }
 
 /* Login button */
