@@ -107,7 +107,7 @@ img{
 .login form input.form-control {
   text-decoration: none;
   display: block;
-  width: auto;
+  width: 200px;
   height: auto;
   border: none;
   outline: none;
