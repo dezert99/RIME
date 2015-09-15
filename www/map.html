@@ -35,12 +35,12 @@
     var directionsService = new google.maps.DirectionsService();
     var directionsDisplay;
     var request;
-	var evaPop = false;
-	var secCount = 0;
-	var checkpop;
-	function secUp(){
-		secCount++;
-	}
+  	var evaPop = false;
+  	var secCount = 0;
+  	var checkpop;
+  	function secUp(){
+  		secCount++;
+  	}
      var selectedMode = window.localStorage.getItem('selectedMode');
       // if (setpos===false){
       // start = document.getElementById('start').value;
@@ -287,9 +287,17 @@ if(window.localStorage.getItem('syncRoute')===true){
 // }
 function checkPop(){
 	if(secCount>=7&&evaPop===true){
-		alert('Eva has accepted your invite!');
+		alert('Peter has accepted your invite!');
     clearInterval(checkpop);
+    evaPop = false;
+    var peterPosMarker = new google.maps.Marker({
+      position: new google.maps.LatLng("40.741028","-74.001354"),
+      map: map,
+      title: 'Friend Pos'
+    });
+
 	}
+
 	
 }
 </script>
